@@ -1,0 +1,309 @@
+<section class="page-header">
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3">Product Single</h1>
+          <p>Hath after appear tree great fruitful green dominion moveth sixth abundantly image that midst of god day
+            multiply you’ll which</p>
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Product Single</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="single-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="single-product-slider">
+          <div class="carousel slide" data-ride="carousel" id="single-product-slider">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img src="assets/images/{{fetchedProducts[0].image}}" alt="" class="img-fluid">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/images/product-2.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="carousel-item ">
+                <img src="assets/images/product-1.jpg" alt="" class="img-fluid">
+              </div>
+            </div>
+
+            <ol class="carousel-indicators">
+              <li data-target="#single-product-slider" data-slide-to="0" class="active">
+                <img src="assets/images/product-3.jpg" alt="" class="img-fluid">
+              </li>
+              <li data-target="#single-product-slider" data-slide-to="1">
+                <img src="assets/images/product-2.jpg" alt="" class="img-fluid">
+              </li>
+              <li data-target="#single-product-slider" data-slide-to="2">
+                <img src="assets/images/product-1.jpg" alt="" class="img-fluid">
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="single-product-details mt-5 mt-lg-0">
+          <h2>{{fetchedProducts[0].name}}</h2>
+          <div class="sku_wrapper mb-4">
+            ID: <span class="text-muted">{{fetchedProducts[0].id}}</span>
+          </div>
+
+          <hr>
+
+          <h3 class="product-price">${{fetchedProducts[0].price}}
+            <del>$19.90</del>
+          </h3>
+
+          <p class="product-description my-4 ">
+            {{fetchedProducts[0].description}}
+          </p>
+
+          <form class="cart" action="#" method="post">
+            <div class="quantity d-flex align-items-center">
+              <input type="number" id="#" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9"
+                     name="quantity" value="1" title="Qty" size="4">
+              <a href="#" class="btn btn-main btn-small">Add to cart</a>
+            </div>
+          </form>
+
+
+          <div class="color-swatches mt-4 d-flex align-items-center">
+            <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <a routerLink="/product-single" class="bg-info"></a>
+              </li>
+              <li class="list-inline-item">
+                <a routerLink="/product-single" class="bg-dark"></a>
+              </li>
+              <li class="list-inline-item">
+                <a routerLink="/product-single" class="bg-danger"></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="product-size d-flex align-items-center mt-4">
+            <span class="font-weight-bold text-capitalize product-meta-title">Size:</span>
+            <select class="form-control">
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+          </div>
+
+          <div class="products-meta mt-4">
+            <span class="font-weight-bold text-capitalize product-meta-title">Categories :</span>
+            <div class="product-category d-flex align-items-center"
+                 *ngFor="let category of fetchedProducts[0].categoryList">
+              <!--              <div *ngIf=" else elseBlock">Content to render when condition is true.</div>-->
+              <!--              <ng-template #elseBlock>Content to render when condition is false.</ng-template>-->
+              <a [routerLink]="['/product-list']"
+                 [queryParams]="{ category1: category.category1}">{{category.category1}}</a>
+            </div>
+
+            <div class="product-share mt-5">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#"><i class="tf-ion-social-facebook"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="tf-ion-social-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="tf-ion-social-linkedin"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="tf-ion-social-pinterest"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <nav class="product-info-tabs wc-tabs mt-5 mb-5">
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+               aria-controls="nav-home" aria-selected="true">Description</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+               aria-controls="nav-profile" aria-selected="false">Additional Information</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+               aria-controls="nav-contact" aria-selected="false">Reviews(2)</a>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
+              tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
+              semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+
+            <h4>Product Features</h4>
+
+            <ul class="">
+              <li>Mapped with 3M™ Thinsulate™ Insulation [40G Body / Sleeves / Hood]</li>
+              <li>Embossed Taffeta Lining</li>
+              <li>DRYRIDE Durashell™ 2-Layer Oxford Fabric [10,000MM, 5,000G]</li>
+            </ul>
+
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+            <ul class="list-unstyled info-desc">
+              <li class="d-flex">
+                <strong>Weight </strong>
+                <span>400 g</span>
+              </li>
+              <li class="d-flex">
+                <strong>Dimensions </strong>
+                <span>10 x 10 x 15 cm</span>
+              </li>
+              <li class="d-flex">
+                <strong>Materials</strong>
+                <span>100% cotton</span>
+              </li>
+              <li class="d-flex">
+                <strong>Color </strong>
+                <span>Blue, Gray, Green, Red, Yellow</span>
+              </li>
+              <li class="d-flex">
+                <strong>Size</strong>
+                <span>L, M, S, XL, XXL</span>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="media review-block mb-4">
+                  <img src="assets/images/avater-1.jpg" alt="reviewimg" class="img-fluid mr-4">
+                  <div class="media-body">
+                    <div class="product-review">
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                    </div>
+                    <h6>Therichpost <span class="text-sm text-muted font-weight-normal ml-3">-June 23, 2019</span></h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum suscipit consequuntur in,
+                      perspiciatis laudantium ipsa fugit. Iure esse saepe error dolore quod.</p>
+                  </div>
+                </div>
+
+                <div class="media review-block">
+                  <img src="assets/images/avater-2.jpg" alt="reviewimg" class="img-fluid mr-4">
+                  <div class="media-body">
+                    <div class="product-review">
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star"></i></span>
+                      <span><i class="tf-ion-android-star-outline"></i></span>
+                    </div>
+                    <h6>Therichpost <span class="text-sm text-muted font-weight-normal ml-3">-June 23, 2019</span></h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum suscipit consequuntur in,
+                      perspiciatis laudantium ipsa fugit. Iure esse saepe error dolore quod.</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-5">
+                <div class="review-comment mt-5 mt-lg-0">
+                  <h4 class="mb-3">Add a Review</h4>
+
+                  <form action="#">
+                    <div class="starrr"></div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                      <textarea name="comment" id="comment" class="form-control" cols="30" rows="4"
+                                placeholder="Your Review"></textarea>
+                    </div>
+
+                    <a routerLink="/product-single" class="btn btn-main btn-small">Submit Review</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="products related-products section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="title text-center">
+          <h2>You may like this</h2>
+          <p>The best Online sales to shop these weekend</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <div class="product">
+          <div class="product-wrap">
+            <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
+                                                 src="../../../assets/images/322.jpg" alt="product-img"/></a>
+            <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
+                                                 src="../../../assets/images/444.jpg" alt="product-img"/></a>
+          </div>
+
+          <span class="onsale">Sale</span>
+          <div class="product-hover-overlay">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-suit-heart" viewBox="0 0 16 16">
+                <path
+                  d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="product-info">
+            <h2 class="product-title h5 mb-0"><a routerLink="/product-single">{{fetchedProducts[0].name}}</a></h2>
+            <span class="price">
+              $329.10
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>

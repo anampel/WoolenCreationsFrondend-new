@@ -1,0 +1,212 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
+  <div class="container">
+    <div class="collapse navbar-collapse " id="logo">
+      <a class="navbar-brand font-weight-bold" routerLink="/">Woolen Creations</a>
+    </div>
+
+    <div class="collapse navbar-collapse " id="main-navbar">
+      <ul class="navbar-nav mx-auto">
+
+        <!-- Men -->
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Men'}" id="man" role="button" data-delay="350"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Man
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="man">
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Men', category2: 'Clothes'}">Clothes</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Men', category2: 'Underwear'}">Underwear</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Men', category2: 'Accessories'}">Accessories</a></li>
+          </ul>
+        </li>
+        <!-- / Men -->
+        <!-- Women -->
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Women'}" id="woman" role="button" data-delay="350"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Woman
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="woman">
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Women', category2: 'Clothes'}">Clothes</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Women', category2: 'Underwear'}">Underwear</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Women', category2: 'Accessories'}">Accessories</a></li>
+          </ul>
+        </li>
+        <!-- /Women -->
+        <!-- Kids -->
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Kids'}" id="kid" role="button" data-delay="350"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Kid
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="kid">
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Kids', category2: 'Clothes'}">Clothes</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Kids', category2: 'Underwear'}">Underwear</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Kids', category2: 'Accessories'}">Accessories</a></li>
+          </ul>
+        </li>
+        <!-- /Kids -->
+        <!-- House -->
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Home'}" id="house" role="button" data-delay="350"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Household
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="house">
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Home', category2: 'Bedroom'}">Bedroom</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Home', category2: 'Kitchen'}">Kitchen</a></li>
+            <li><a [routerLink]="['/product-list']"  [queryParams]="{ category1: 'Home', category2: 'Decoration'}">Decoration</a></li>
+          </ul>
+        </li>
+        <!-- /House -->
+        <!-- Create your own -->
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" routerLink="/createYourOwn" id="createYourOwn" role="button" data-delay="350"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Create your own
+          </a>
+        </li>
+        <!-- /Create your own -->
+        <!-- Pages -->
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-delay="350"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Pages
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a routerLink="pages/aboutUs">About Us</a></li>
+            <li><a routerLink="pages/blog">Blog</a></li>
+            <li><a routerLink="pages/faq">FAQ</a></li>
+          </ul>
+        </li>
+        <!-- /Pages -->
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="pages/contact">Contact</a>
+        </li>
+        <!-- /Contact -->
+      </ul>
+    </div>
+    <!-- Navbar-collapse -->
+
+    <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
+      <!-- Search -->
+      <li class="list-inline-item">
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                 viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </button>
+        </form>
+
+
+      </li>
+      <!-- / Search -->
+
+      <!-- Wishlist-->
+      <li class="list-inline-item">
+        <a routerLink="/wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
+            <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
+          </svg>
+        </a>
+      </li>
+      <!-- / Wishlist-->
+
+      <!-- Cart -->
+      <li class="dropdown cart-nav dropdown-slide list-inline-item">
+        <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
+               viewBox="0 0 16 16">
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+        </a>
+        <div class="dropdown-menu cart-dropdown">
+          <!-- Cart Item -->
+          <div class="media">
+            <a routerLink="/product-single">
+              <img class="media-object img- mr-3" src="assets/images/cart-1.jpg" alt="image"/>
+            </a>
+            <div class="media-body">
+              <h6>Ladies Bag</h6>
+              <div class="cart-price">
+                <span>1 x</span>
+                <span>1250.00</span>
+              </div>
+            </div>
+            <a href="#" class="remove">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd"
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+            </a>
+          </div><!-- / Cart Item -->
+
+          <!-- Cart Item -->
+          <div class="media">
+            <a routerLink="/product-single">
+              <img class="media-object img-fluid mr-3" src="assets/images/cart-2.jpg" alt="image"/>
+            </a>
+            <div class="media-body">
+              <h6>Skinny Jeans</h6>
+              <div class="cart-price">
+                <span>1 x</span>
+                <span>1250.00</span>
+              </div>
+            </div>
+            <a href="#" class="remove">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                   viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd"
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+            </a>
+          </div><!-- / Cart Item -->
+
+          <div class="cart-summary">
+            <span class="h6">Total</span>
+            <span class="total-price h6">$1799.00</span>
+
+            <div class="text-center cart-buttons mt-3">
+              <a routerLink="/cart" class="btn btn-small btn-transparent btn-block">View Cart</a>
+              <a routerLink="/checkout" class="btn btn-small btn-main btn-block">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- / Cart -->
+
+      <!-- Account -->
+      <li class="nav-item dropdown dropdown-slide list-inline-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-delay="350"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person"
+               viewBox="0 0 16 16">
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+          </svg>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+          <li><a href="#">Dahsboard</a></li>
+          <li><a routerLink="/order">Orders</a></li>
+          <li><a routerLink="/user-details">Profile Details</a></li>
+          <li><a routerLink="/login">Login Page</a></li>
+          <li><a routerLink="/signup">SignUp Page</a></li>
+          <li><a routerLink="/forgotPass">Forgot Password</a></li>
+        </ul>
+      </li>
+      <!-- / Account -->
+
+    </ul>
+  </div>
+</nav>
