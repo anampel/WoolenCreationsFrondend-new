@@ -7,10 +7,10 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CheckoutComponent } from './shopping/checkout/checkout.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
-import { LoginComponent } from './user/authentication/login/login.component';
+// import { LoginComponent } from './user/authentication/login/login.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { WishlistComponent } from './products/wishlist/wishlist.component';
-import { SignupComponent } from './user/authentication/signup/signup.component';
+// import { SignupComponent } from './user/authentication/signup/signup.component';
 import { ForgotPassComponent } from './user/authentication/forgot-pass/forgot-pass.component';
 import { OrderComponent } from './shopping/order/order.component';
 import {FaqComponent} from './header/pages/faq/faq.component';
@@ -27,10 +27,10 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'product-list', component: ProductListComponent },
-  { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent },
   { path: 'user-details', component: UserDetailsComponent },
   { path: 'wishlist', component: WishlistComponent },
-  { path: 'signup', component: SignupComponent },
+  // { path: 'signup', component: SignupComponent },
   { path: 'forgotPass', component: ForgotPassComponent },
   { path: 'order', component: OrderComponent },
   { path: 'pages/faq', component: FaqComponent },
