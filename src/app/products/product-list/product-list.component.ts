@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
 
   private catName: string;
   private subCatName: string;
-  public fetchedCategories: any[];
+  public fetchedProductsByCategory: any[];
   public isSale: boolean;
   public sorting: string;
   public sortingColumn: string;
@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit {
 
   onSale(iter) {
     this.isSale = false;
-    if (this.fetchedCategories[iter].offer != null) {
+    if (this.fetchedProductsByCategory[iter].offer != null) {
       this.isSale = true;
     }
     return this.isSale;
@@ -52,13 +52,13 @@ export class ProductListComponent implements OnInit {
       console.log('Not supported yet');
     }
     this.categoryService.findProductsByCategory().subscribe(
-      (response: any[]) => this.fetchedCategories = response
+      (response: any[]) => this.fetchedProductsByCategory = response
     );
     if (this.route.snapshot.queryParamMap.get('category2') != null) {
       this.subCatName = this.route.snapshot.queryParamMap.get('category2');
       this.categoryService.setSubCatName(this.subCatName);
-      this.categoryService.findProductByCategory().subscribe(
-        (response: any[]) => this.fetchedCategories = response
+      this.categoryService.findProductBySubCategory().subscribe(
+        (response: any[]) => this.fetchedProductsByCategory = response
       );
     }
     this.categoryService.setSorting(this.sorting);

@@ -44,7 +44,7 @@
 
         <div class="row">
           <!--Loop on products in order to show the products per category -->
-          <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let prod of fetchedCategories; let i = index">
+          <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let prod of fetchedProductsByCategory; let i = index">
             <div class="product">
               <div class="product-wrap">
                 <a routerlink="/product-item"><img class="img-fluid w-100 mb-3 img-first"
@@ -70,7 +70,7 @@
               </div>
 
               <div class="product-info">
-                <h2 class="product-title h5 mb-0"><a routerlink="/product-item">{{prod.name}}</a></h2>
+                <h2 class="product-title h5 mb-0"><a [routerLink]="['/product-item']" [queryParams]="{ id: prod.id }">{{prod.name}}</a></h2>
                 <span class="price">
                   ${{prod.price}}
                 </span>

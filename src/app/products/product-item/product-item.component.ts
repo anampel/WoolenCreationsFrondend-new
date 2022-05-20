@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AppService} from '../../app.service';
+import {ProductListService} from '../product-list/product-list.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-item',
@@ -7,14 +8,18 @@ import {AppService} from '../../app.service';
   styleUrls: ['./product-item.component.css'],
 })
 export class ProductItemComponent implements OnInit {
-  public fetchedProducts: any[];
+  public fetchedProductsById: any[];
+  private id: string;
 
-  constructor(private productService: AppService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService) { }
 
   ngOnInit() {
-    this.productService.findAllProducts().subscribe(
-      (response: any[]) => this.fetchedProducts = response
-    );
+    if ( this.route.snapshot.queryParamMap.get('id') != null) {
+      this.id =  this.route.snapshot.queryParamMap.get('id');
+      this.productService.setId(this.id);
+      this.productService.findProductById().subscribe(
+        (response: any[]) => this.fetchedProductsById = response
+      );
   }
 
-}
+}}
