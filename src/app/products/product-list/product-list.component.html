@@ -47,9 +47,9 @@
           <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let prod of fetchedCategories; let i = index">
             <div class="product">
               <div class="product-wrap">
-                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
+                <a routerlink="/product-item"><img class="img-fluid w-100 mb-3 img-first"
                                                      src="../../../assets/images{{prod.image}}" alt="product-img"/></a>
-                <!--                <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second" src="../../../assets/images/222.jpg" alt="product-img" /></a>-->
+                <!--                <a routerlink="/product-item"><img class="img-fluid w-100 mb-3 img-second" src="../../../assets/images/222.jpg" alt="product-img" /></a>-->
               </div>
               <ng-container *ngIf="onSale(i)"><span class="onsale">Sale</span></ng-container>
               <div class="product-hover-overlay">
@@ -70,7 +70,7 @@
               </div>
 
               <div class="product-info">
-                <h2 class="product-title h5 mb-0"><a routerLink="/product-single">{{prod.name}}</a></h2>
+                <h2 class="product-title h5 mb-0"><a routerlink="/product-item">{{prod.name}}</a></h2>
                 <span class="price">
                   ${{prod.price}}
                 </span>
@@ -174,7 +174,7 @@
         <!-- popular product -->
         <section class="widget widget-popular mb-5">
           <h3 class="widget-title mb-4 h4">Popular Products</h3>
-          <a class="popular-products-item media" routerLink="/product-single">
+          <a class="popular-products-item media" routerlink="/product-item">
             <img src="../../../assets/images/p-1.jpg" alt="" class="img-fluid mr-4">
             <div class="media-body">
               <h6>Contrast <br>Backpack</h6>
@@ -182,7 +182,7 @@
             </div>
           </a>
 
-          <a class="popular-products-item media" routerLink="/product-single">
+          <a class="popular-products-item media" routerlink="/product-item">
             <img src="../../../assets/images/p-2.jpg" alt="" class="img-fluid mr-4">
             <div class="media-body">
               <h6>Hoodie with <br>Logo</h6>
@@ -190,7 +190,7 @@
             </div>
           </a>
 
-          <a class="popular-products-item media" routerLink="/product-single">
+          <a class="popular-products-item media" routerlink="/product-item">
             <img src="../../../assets/images/p-3.jpg" alt="" class="img-fluid mr-4">
             <div class="media-body">
               <h6>Traveller<br>Backpack</h6>

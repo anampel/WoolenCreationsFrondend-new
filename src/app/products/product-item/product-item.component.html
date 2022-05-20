@@ -28,25 +28,25 @@
           <div class="carousel slide" data-ride="carousel" id="single-product-slider">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                  <img src="assets/images/{{fetchedProducts[0].image}}" alt="" class="img-fluid">
+                  <img src="../../../assets/images/{{fetchedProducts[0].image}}" alt="" class="img-fluid">
               </div>
               <div class="carousel-item">
-                <img src="assets/images/product-2.jpg" alt="" class="img-fluid">
+                <img src="../../../assets/images/product-2.jpg" alt="" class="img-fluid">
               </div>
               <div class="carousel-item ">
-                <img src="assets/images/product-1.jpg" alt="" class="img-fluid">
+                <img src="../../../assets/images/product-1.jpg" alt="" class="img-fluid">
               </div>
             </div>
 
             <ol class="carousel-indicators">
               <li data-target="#single-product-slider" data-slide-to="0" class="active">
-                <img src="assets/images/product-3.jpg" alt="" class="img-fluid">
+                <img src="../../../assets/images/product-3.jpg" alt="" class="img-fluid">
               </li>
               <li data-target="#single-product-slider" data-slide-to="1">
-                <img src="assets/images/product-2.jpg" alt="" class="img-fluid">
+                <img src="../../../assets/images/product-2.jpg" alt="" class="img-fluid">
               </li>
               <li data-target="#single-product-slider" data-slide-to="2">
-                <img src="assets/images/product-1.jpg" alt="" class="img-fluid">
+                <img src="../../../assets/images/product-1.jpg" alt="" class="img-fluid">
               </li>
             </ol>
           </div>
@@ -83,13 +83,13 @@
             <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
-                <a routerLink="/product-single" class="bg-info"></a>
+                <a routerlink="/product-item" class="bg-info"></a>
               </li>
               <li class="list-inline-item">
-                <a routerLink="/product-single" class="bg-dark"></a>
+                <a routerlink="/product-item" class="bg-dark"></a>
               </li>
               <li class="list-inline-item">
-                <a routerLink="/product-single" class="bg-danger"></a>
+                <a routerlink="/product-item" class="bg-danger"></a>
               </li>
             </ul>
           </div>
@@ -243,7 +243,7 @@
                                 placeholder="Your Review"></textarea>
                     </div>
 
-                    <a routerLink="/product-single" class="btn btn-main btn-small">Submit Review</a>
+                    <a routerlink="/product-item" class="btn btn-main btn-small">Submit Review</a>
                   </form>
                 </div>
               </div>
@@ -270,9 +270,9 @@
       <div class="col-lg-3 col-6">
         <div class="product">
           <div class="product-wrap">
-            <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-first"
+            <a routerlink="/product-item"><img class="img-fluid w-100 mb-3 img-first"
                                                  src="../../../assets/images/322.jpg" alt="product-img"/></a>
-            <a routerLink="/product-single"><img class="img-fluid w-100 mb-3 img-second"
+            <a routerlink="/product-item"><img class="img-fluid w-100 mb-3 img-second"
                                                  src="../../../assets/images/444.jpg" alt="product-img"/></a>
           </div>
 
@@ -295,7 +295,7 @@
           </div>
 
           <div class="product-info">
-            <h2 class="product-title h5 mb-0"><a routerLink="/product-single">{{fetchedProducts[0].name}}</a></h2>
+            <h2 class="product-title h5 mb-0"><a routerlink="/product-item">{{fetchedProducts[0].name}}</a></h2>
             <span class="price">
               $329.10
             </span>
