@@ -4,12 +4,12 @@ export class ProductModel {
   description: string;
   price: number;
   points: number;
-  image: symbol;
+  image: string;
   color: string;
   size: string;
 
 
-  constructor(id: bigint, name: string, description: string, price: number, points: number, image: symbol, color: string, size: string) {
+  constructor(id: bigint, name: string, description: string, price: number, points: number, image: string, color: string, size: string) {
     this.id = id;
     this.name = name;
     this.description = description;
