@@ -14,8 +14,8 @@ export class ProductListComponent implements OnInit {
   ) {
   }
 
-  private catName: string;
-  private subCatName: string;
+  public catName: string;
+  public subCatName: string;
   public fetchedProductsByCategory: any[];
   public isSale: boolean;
   public sorting: string;

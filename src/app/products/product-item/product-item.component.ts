@@ -3,7 +3,6 @@ import {ProductListService} from '../product-list/product-list.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductModel} from './product.model';
 import {ProductListComponent} from '../product-list/product-list.component';
-import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-product-item',
@@ -14,13 +13,10 @@ import {UserService} from '../../user/user.service';
 export class ProductItemComponent implements OnInit {
   public fetchedProductsById: ProductModel;
   private id: string;
-  private fetchedProductsByCategory: any[];
 
-  // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService, private productListComponent: ProductListComponent) { }
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService) { }
 
   ngOnInit() {
-    this.fetchedProductsByCategory = this.productListComponent.fetchedProductsByCategory;
     if ( this.route.snapshot.queryParamMap.get('id') != null) {
       this.id =  this.route.snapshot.queryParamMap.get('id');
       this.productService.setId(this.id);
