@@ -36,6 +36,7 @@ import { UserService } from './user/user.service';
 import { UserDetailsService } from './user/user-details/user-details.service';
 import { AppService } from './app.service';
 import { ProductListService } from './products/product-list/product-list.service';
+import { CartService } from './shopping/cart/cart.service';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { ProductListService } from './products/product-list/product-list.service
     UserService,
     UserDetailsService,
     ProductListService,
-    AppService
+    AppService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

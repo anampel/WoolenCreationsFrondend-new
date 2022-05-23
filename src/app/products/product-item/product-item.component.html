@@ -23,8 +23,8 @@
         <div class="single-product-slider">
           <div class="carousel slide" data-ride="carousel" id="single-product-slider">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                  <img src="../../../assets/images/{{fetchedProductsById.image}}" alt="" class="img-fluid">
+              <div class="carousel-item active" *ngIf="fetchedProductsById.image">
+                  <img src="../../../assets/images{{fetchedProductsById.image}}" alt="" class="img-fluid">
               </div>
               <div class="carousel-item">
                 <img src="../../../assets/images/product-2.jpg" alt="" class="img-fluid">
@@ -61,21 +61,19 @@
 
           <hr>
 
-          <h3 class="product-price">${{fetchedProductsById.price}}
-            <ng-container *ngIf="fetchedProductsById != null"><del>${{fetchedProductsById.price + fetchedProductsById.offer.discount/100*fetchedProductsById.price}}</del></ng-container>
+          <h3 class="product-price">€{{fetchedProductsById.price}}
+            <ng-container *ngIf="fetchedProductsById.offer"><del>€{{fetchedProductsById.price + fetchedProductsById.offer.discount/100*fetchedProductsById.price}}</del></ng-container>
           </h3>
 
           <p class="product-description my-4 ">
             {{fetchedProductsById.description}}
           </p>
 
-          <form class="cart" action="#" method="post">
-            <div class="quantity d-flex align-items-center">
-              <input type="number" id="#" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9"
-                     name="quantity" value="1" title="Qty" size="4">
-              <a href="#" class="btn btn-main btn-small">Add to cart</a>
-            </div>
-          </form>
+          <div *ngIf="fetchedProductsById" class="quantity d-flex align-items-center">
+            <input type="number" id="quantity" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9"
+                   name="quantity" value="1" title="Qty" size="4">
+              <button class="btn btn-main btn-small" type="button" (click)="addToCart(fetchedProductsById)">Add to cart</button>
+          </div>
 
 
           <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'red'">
@@ -129,7 +127,7 @@
 
 
 
-          <div class="product-size d-flex align-items-center mt-4" *ngIf="fetchedProductsById.size != null">
+          <div class="product-size d-flex align-items-center mt-4" *ngIf="fetchedProductsById.size">
             <span class="font-weight-bold text-capitalize product-meta-title">Size:</span>
             <select class="form-control">
               <option>{{fetchedProductsById.size}}</option>
