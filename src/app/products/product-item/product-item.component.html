@@ -62,7 +62,9 @@
           <hr>
 
           <h3 class="product-price">${{fetchedProductsById.price}}
-            <del>$19.90</del>
+            <ng-container *ngIf="fetchedProductsById != null"><del>${{fetchedProductsById.price + fetchedProductsById.offer.discount/100*fetchedProductsById.price}}</del></ng-container>
+<!--            <div *ngIf="fetchedProductsById != null"><del>${{fetchedProductsById.price + fetchedProductsById.offer.discount*fetchedProductsById.price}}</del></div>-->
+<!--            <ng-template #elseBlock>Content to render when condition is false.</ng-template>-->
           </h3>
 
           <p class="product-description my-4 ">
@@ -132,10 +134,7 @@
           <div class="product-size d-flex align-items-center mt-4">
             <span class="font-weight-bold text-capitalize product-meta-title">Size:</span>
             <select class="form-control">
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
+              <option>{{fetchedProductsById.size}}</option>
             </select>
           </div>
 
