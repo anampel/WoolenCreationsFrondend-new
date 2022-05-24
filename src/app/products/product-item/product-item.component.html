@@ -16,14 +16,14 @@
   </div>
 </section>
 
-<section class="single-product">
+<section class="single-product" *ngIf="fetchedProductsById">
   <div class="container">
     <div class="row">
       <div class="col-md-5">
         <div class="single-product-slider">
           <div class="carousel slide" data-ride="carousel" id="single-product-slider">
             <div class="carousel-inner">
-              <div class="carousel-item active" *ngIf="fetchedProductsById.image">
+              <div class="carousel-item active">
                   <img src="../../../assets/images{{fetchedProductsById.image}}" alt="" class="img-fluid">
               </div>
               <div class="carousel-item">
@@ -312,12 +312,12 @@
             </a>
           </div>
 
-          <div class="product-info">
-            <h2 class="product-title h5 mb-0"><a [routerLink]="['/product-item']">{{fetchedProductsById.name}}</a></h2>
-            <span class="price">
-              $329.10
-            </span>
-          </div>
+<!--          <div class="product-info">-->
+<!--            <h2 class="product-title h5 mb-0"><a [routerLink]="['/product-item']">{{fetchedProductsById.name}}</a></h2>-->
+<!--            <span class="price">-->
+<!--              $329.10-->
+<!--            </span>-->
+<!--          </div>-->
         </div>
       </div>
 

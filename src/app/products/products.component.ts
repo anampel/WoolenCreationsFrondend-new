@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../app.service';
+import {ProductModel} from './product-item/product.model';
 
 @Component({
   selector: 'app-shop',
@@ -7,7 +8,7 @@ import {AppService} from '../app.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  public fetchedProducts: any[];
+  public fetchedProducts: ProductModel[] = [];
   public isSale: boolean;
   constructor(private productService: AppService) { }
 
@@ -22,7 +23,7 @@ export class ProductsComponent implements OnInit {
   }
   ngOnInit() {
     this.productService.findAllProducts().subscribe(
-      (response: any[]) => this.fetchedProducts = response
+      (response) => this.fetchedProducts = response
     );
   }
 

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   addToCart(product: ProductModel) {
-    this.cartService.addToCart(product);
+    this.cartService.updateProductGroup(product);
     window.alert('Your product has been added to the cart!');
   }
 }

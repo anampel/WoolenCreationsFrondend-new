@@ -11,6 +11,15 @@ export interface ProductModel {
   offer: Offer;
 
 }
+
+export type ProductId = number;
+
+export interface ProductGroup {
+  product: ProductModel;
+  quantity: number;
+  groupPrice: number;
+}
+
 export interface CategoryList {
     categoryId: number;
     categoryName: string;

@@ -19,7 +19,7 @@ export class ProductItemComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService, private cartService: CartService) { }
 
   addToCart(product: ProductModel) {
-    this.cartService.addToCart(product);
+    this.cartService.updateProductGroup(product);
     window.alert('Your product has been added to the cart!');
   }
   ngOnInit() {
