@@ -7,7 +7,6 @@ import { FormBuilder } from '@angular/forms';
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  // providers: [CartService]
 })
 export class CartComponent implements OnInit {
   private productId: string;
@@ -27,6 +26,10 @@ export class CartComponent implements OnInit {
     this.items = this.cartService.clearCart();
     console.warn('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
+  }
+
+  removeFromCart(index) {
+    this.cartService.removeFromCart(index);
   }
 
   ngOnInit(): void {

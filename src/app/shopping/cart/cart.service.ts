@@ -20,6 +20,10 @@ export class CartService {
     return this.items;
   }
 
+  removeFromCart(index) {
+    this.items.splice(index, 1);
+  }
+
   clearCart() {
     this.items = [];
     return this.items;
