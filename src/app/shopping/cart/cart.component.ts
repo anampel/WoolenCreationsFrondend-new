@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from './cart.service';
-import { FormBuilder } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -10,12 +10,13 @@ import { FormBuilder } from '@angular/forms';
 })
 export class CartComponent implements OnInit {
   private productId: string;
-  private quantity: string;
+  public quantity: number;
   items = this.cartService.getItems();
 
   checkoutForm = this.formBuilder.group({
     name: '',
-    address: ''
+    address: '',
+    qty: this.quantity
   });
 
   // tslint:disable-next-line:max-line-length
@@ -32,10 +33,18 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(index);
   }
 
+  getQuantity(): number {
+      return this.checkoutForm.get('qty').value;
+   }
   ngOnInit(): void {
     this.productId = this.route.snapshot.queryParamMap.get('productId');
-    this.quantity = this.route.snapshot.queryParamMap.get('quantity');
+    // this.quantity = this.route.snapshot.queryParamMap.get('quantity');
     console.log('Items to be returned: ' + this.items);
+    this.checkoutForm = new FormGroup(
+      {
+        qty: new FormControl()
+      }
+    );
   }
 
 }
