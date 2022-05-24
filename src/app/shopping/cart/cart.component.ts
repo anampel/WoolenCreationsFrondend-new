@@ -12,11 +12,13 @@ export class CartComponent implements OnInit {
   private productId: string;
   public quantity: number;
   items = this.cartService.getItems();
+  total: number;
 
   checkoutForm = this.formBuilder.group({
     name: '',
     address: '',
-    qty: this.quantity
+    qty: this.quantity,
+    total: this.total
   });
 
   // tslint:disable-next-line:max-line-length
@@ -33,6 +35,14 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(index);
   }
 
+  calculateTotal() {
+    this.total = 0;
+    for (const item of this.items) {
+      this.total = this.total + item.price;
+    }
+    return this.total;
+  }
+
   getQuantity(): number {
       return this.checkoutForm.get('qty').value;
    }
@@ -42,7 +52,8 @@ export class CartComponent implements OnInit {
     console.log('Items to be returned: ' + this.items);
     this.checkoutForm = new FormGroup(
       {
-        qty: new FormControl()
+        qty: new FormControl(),
+        total: new FormControl()
       }
     );
   }

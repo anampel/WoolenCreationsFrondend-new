@@ -55,17 +55,17 @@
                     <div class="quantity"><br>
                       <label class="sr-only">Quantity</label>
                       <input type="number" formControlName="qty" class="input-text qty text" step="1" min="0" max="9" value="1"
-                             title="Qty" size="4"><br>
+                             title="Qty" size="4"> <br>
                     </div>
                     <br>
                   </div>
 
-                  <div class="col-sm product-subtotal" data-title="Total">
+                  <div class="col-sm product-subtotal" data-title="Total" formControlName="total" >
                     <span class="amount"><span class="currencySymbol"><pre wp-pre-tag-3=""></pre>
                                       €</span>{{item.price * getQuantity()}}</span> <br>
                   </div>
 
-                  <div class="col-sm product-remove" data-title="Remove"><br>
+                  <div class="col-sm product-remove" data-title="Remove" formControlName="remove"><br>
                     <button class="remove" aria-label="Remove this item" data-product_id="30"
                             data-product_sku="" (click)="removeFromCart(i)">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -96,7 +96,7 @@
             <ul class="list-unstyled mb-4"><br>
               <li class="d-flex justify-content-between pb-2 mb-3"><br>
                 <h5>Subtotal</h5><br>
-                <span>$90.00</span><br>
+                <span>€{{total}}</span><br>
               </li>
 
 
@@ -108,7 +108,7 @@
 
               <li class="d-flex justify-content-between pb-2"><br>
                 <h5>Total</h5><br>
-                <span>$90.00</span><br>
+                <span>€{{total}}</span><br>
               </li>
               <br>
             </ul>
