@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from './cart.service';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {ProductGroup} from '../../products/product-item/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -11,9 +12,8 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 export class CartComponent implements OnInit {
   private productId: string;
   public quantity: number;
-  items = this.cartService.getItems();
   total = 0;
-
+  productGroups: ProductGroup[] = Array.from(this.cartService.productGroupMap.values());
   checkoutForm = this.formBuilder.group({
     name: '',
     address: '',
@@ -27,13 +27,12 @@ export class CartComponent implements OnInit {
 
   onSubmit(): void {
     // Process checkout data here
-    this.items = this.cartService.clearCart();
     console.warn('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
   }
 
-  removeFromCart(index) {
-    this.cartService.removeFromCart(index);
+  removeFromCart(productGroup: ProductGroup) {
+    this.cartService.removeFromCart(productGroup.product.id);
   }
 
   getQuantity(): number {
@@ -43,7 +42,6 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.productId = this.route.snapshot.queryParamMap.get('productId');
     // this.quantity = this.route.snapshot.queryParamMap.get('quantity');
-    console.log('Items to be returned: ' + this.items);
     this.checkoutForm.get('qty').valueChanges.subscribe(value => {
       console.log('quantity changed', value);
     });

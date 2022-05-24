@@ -18,8 +18,8 @@ export class ProductItemComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService, private cartService: CartService) { }
 
-  addToCart(product: ProductModel) {
-    this.cartService.updateProductGroup(product);
+  addToCart(product: ProductModel, quantity = 1) {
+    this.cartService.updateProductGroup(product, quantity);
     window.alert('Your product has been added to the cart!');
   }
   ngOnInit() {

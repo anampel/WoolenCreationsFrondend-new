@@ -33,22 +33,22 @@
                 <div class="col-sm product-remove"></div>
               </div>
               <!-- Cart items loop -->
-              <div class="cart-item" *ngFor="let item of items; let i = index;">
+              <div class="cart-item" *ngFor="let productGroup of productGroups; let i = index;">
                 <div class="row row-content row-cols-6 align-content-center align-items-center">
                   <div class="col-sm product-thumbnail" data-title="Thumbnail">
                     <a routerlink="/product-item">
-                      <img src="assets/images{{item.image}}"
+                      <img src="assets/images{{productGroup.product.image}}"
                            class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
                            alt=""></a>
                   </div>
 
                   <div class="col-sm product-name" data-title="Product">
-                    <a href="#">{{item.name}}</a>
+                    <a >{{productGroup.product.name}}</a>
                   </div>
 
                   <div class="col-sm product-price" data-title="Price">
                                     <span class="amount"><span class="currencySymbol"><pre wp-pre-tag-3=""></pre>
-                                      €</span>{{item.price}}</span> <br>
+                                      €</span>{{productGroup.product.price}}</span> <br>
                   </div>
 
                   <div class="col-sm product-quantity" data-title="Quantity"><br>
@@ -62,12 +62,12 @@
 
                   <div class="col-sm product-subtotal" data-title="Total">
                     <span class="amount"><span class="currencySymbol"><pre wp-pre-tag-3=""></pre>
-                                      €</span>{{item.price * getQuantity()}}</span> <br>
+                                      €</span>{{productGroup.groupPrice}}</span> <br>
                   </div>
 
                   <div class="col-sm product-remove" data-title="Remove"><br>
                     <button class="remove" aria-label="Remove this item" data-product_id="30"
-                            data-product_sku="" (click)="removeFromCart(i)">
+                            data-product_sku="" (click)="removeFromCart(productGroup[i])">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                            class="bi bi-trash"
                            viewBox="0 0 16 16">

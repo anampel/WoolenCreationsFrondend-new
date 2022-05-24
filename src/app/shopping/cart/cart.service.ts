@@ -32,8 +32,8 @@ export class CartService {
     });
   }
 
-  removeFromCart(product: ProductModel) {
-    this.productGroupMap.delete(product.id);
+  removeFromCart(id: ProductId) {
+    this.productGroupMap.delete(id);
   }
 
   clearCart() {
