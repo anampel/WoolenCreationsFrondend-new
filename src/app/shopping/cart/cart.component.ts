@@ -14,9 +14,7 @@ export class CartComponent implements OnInit {
   public quantity: number;
   total = 0;
   productGroups: ProductGroup[] = Array.from(this.cartService.productGroupMap.values());
-  checkoutForm = this.formBuilder.group({
-    name: '',
-    address: '',
+  cartForm = this.formBuilder.group({
     qty: this.quantity,
     total: this.total
   });
@@ -25,24 +23,22 @@ export class CartComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private cartService: CartService, private formBuilder: FormBuilder) {
   }
 
-  onSubmit(): void {
-    // Process checkout data here
-    console.warn('Your order has been submitted', this.checkoutForm.value);
-    this.checkoutForm.reset();
-  }
-
   removeFromCart(productGroup: ProductGroup) {
     this.cartService.removeFromCart(productGroup.product.id);
   }
 
   getQuantity(): number {
-    return this.checkoutForm.get('qty').value;
+    return this.cartForm.get('qty').value;
+  }
+
+  getTotalPrice(): number {
+    return this.cartService.cartTotalPrice;
   }
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.queryParamMap.get('productId');
     // this.quantity = this.route.snapshot.queryParamMap.get('quantity');
-    this.checkoutForm.get('qty').valueChanges.subscribe(value => {
+    this.cartForm.get('qty').valueChanges.subscribe(value => {
       console.log('quantity changed', value);
     });
   }

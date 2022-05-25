@@ -17,7 +17,7 @@
   </div>
 </section>
 
-<form class="cart-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<form class="cart-form" [formGroup]="cartForm">
   <section class="cart shopping page-wrapper">
     <div class="container">
       <div class="row justify-content-center">
@@ -96,7 +96,7 @@
             <ul class="list-unstyled mb-4"><br>
               <li class="d-flex justify-content-between pb-2 mb-3"><br>
                 <h5>Subtotal</h5><br>
-                <span>€{{total}}</span><br>
+                <span>€{{getTotalPrice()}}</span><br>
               </li>
 
 
@@ -108,12 +108,12 @@
 
               <li class="d-flex justify-content-between pb-2"><br>
                 <h5>Total</h5><br>
-                <span>€{{total}}</span><br>
+                <span>€{{getTotalPrice()}}</span><br>
               </li>
               <br>
             </ul>
             <br>
-            <button class="button" type="submit">Checkout</button>
+            <a routerLink="/checkout" class="btn btn-main btn-small">Proceed to checkout</a><br>
           </div>
           <br>
         </div>
