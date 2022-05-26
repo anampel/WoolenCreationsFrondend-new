@@ -15,7 +15,7 @@
     </div>
   </div>
 </section>
-
+<form class="cart-form" [formGroup]="productItemForm">
 <section class="single-product" *ngIf="fetchedProductsById">
   <div class="container">
     <div class="row">
@@ -70,8 +70,8 @@
           </p>
 
           <div *ngIf="fetchedProductsById" class="quantity d-flex align-items-center">
-            <input type="number" id="quantity" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9"
-                   name="quantity" value="1" title="Qty" size="4">
+            <input type="number" formControlName="quantity" id="quantity" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9" value="1"
+                   title="Qty" size="4">
               <button class="btn btn-main btn-small" type="button" (click)="addToCart(fetchedProductsById)">Add to cart</button>
           </div>
 
@@ -272,7 +272,7 @@
     </div>
   </div>
 </section>
-
+</form>
 
 <section class="products related-products section">
   <div class="container">
