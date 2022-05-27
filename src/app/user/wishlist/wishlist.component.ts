@@ -31,6 +31,14 @@ export class WishlistComponent implements OnInit {
     return this.isSale;
   }
 
+  removeFromWishList(productId: number, userId: number) {
+    this.userId = userId;
+    this.userService.setUserId(userId);
+    this.userService.setProductId(productId);
+    this.userService.removeFromWishList().subscribe();
+    window.alert('The product ' + productId + ' deleted from wishlist');
+  }
+
   addProductToWishList(userId: number, productId: number) {
     this.userId = userId;
     this.userService.setUserId(userId);

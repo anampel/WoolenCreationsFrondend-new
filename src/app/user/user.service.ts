@@ -36,6 +36,10 @@ export class UserService {
     const url1 = this.userUrl + 'findWishList?userId=' + this.userId;
     return this.http.get(url1);
   }
+  removeFromWishList(): any {
+    const url1 = this.userUrl + 'deleteFromWishList?userId=' + this.userId + '&productId=' + this.productId;
+    return this.http.delete<any>(url1, this.httpOptions);
+  }
 
   addToWishlist(): any {
     const url1 = this.userUrl + 'addToWishlist';
