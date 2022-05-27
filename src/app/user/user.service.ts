@@ -37,9 +37,9 @@ export class UserService {
     return this.http.get(url1);
   }
 
-  addToWishlist() {
+  addToWishlist(): any {
     const url1 = this.userUrl + 'addToWishlist';
-    return this.http.post<User>(url1, {
+    return this.http.post<any>(url1, {
       userId: this.userId,
       productId: this.productId
     }, this.httpOptions);
