@@ -32,10 +32,11 @@ export class WishlistComponent implements OnInit {
   }
 
   addProductToWishList(userId: number, productId: number) {
-    userId = this.userId;
+    this.userId = userId;
     this.userService.setUserId(userId);
     this.userService.setProductId(productId);
-    this.userService.addToWishlist();
+    this.userService.addToWishlist().subscribe(user => {this.userId = user.id; });
+    window.alert('The product ' + productId + ' added to wishlist');
   }
 
   ngOnInit(): void {
