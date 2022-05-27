@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.css'],
-  providers: [UserService, CartService]
+  providers: [UserService]
 })
 export class WishlistComponent implements OnInit {
   fetchedWishlistProducts: ProductModel[];

@@ -29,6 +29,9 @@ export class CartService {
       quantity,
       groupPrice: product.price * quantity
     });
+    console.log('Product Id: ' + this.productGroupMap.get(product.id.valueOf()));
+    console.log('Quantity: ' + this.productGroupMap.get(quantity.valueOf()));
+    console.log('Group price: ' + this.productGroupMap.get(this.getProductGroupPrice(product.id)));
   }
 
   removeFromCart(id: ProductId) {
