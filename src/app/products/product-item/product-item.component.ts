@@ -18,10 +18,13 @@ export class ProductItemComponent implements OnInit {
   productItemForm = this.formBuilder.group({
     quantity: new FormControl()
   });
-  // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService, private cartService: CartService, private formBuilder: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+              private productService: ProductListService, private cartService: CartService, private formBuilder: FormBuilder) { }
 
   addToCart(product: ProductModel, quantity = this.productItemForm.get('quantity').value) {
+    if (quantity === null) {
+      quantity = 1;
+    }
     this.cartService.updateProductGroup(product, quantity);
     window.alert('Your product has been added to the cart! Quantity: ' + quantity);
   }

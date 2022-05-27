@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductListService} from './product-list.service';
+import {ProductModel} from '../product-item/product.model';
+import {CartService} from '../../shopping/cart/cart.service';
+
 
 @Component({
   selector: 'app-product-list',
@@ -10,18 +13,17 @@ import {ProductListService} from './product-list.service';
 export class ProductListComponent implements OnInit {
 
   constructor(
-    private route: ActivatedRoute, private router: Router, private categoryService: ProductListService
-  ) {
+    private route: ActivatedRoute, private router: Router, private categoryService: ProductListService, private cartService: CartService) {
   }
 
   public catName: string;
   public subCatName: string;
-  public fetchedProductsByCategory: any[];
+  public fetchedProductsByCategory: ProductModel[];
   public isSale: boolean;
   public sorting: string;
   public sortingColumn: string;
-  // tslint:disable-next-line:max-line-length
-  public sortBy = ['Sort by popularity', 'Sort by average rating', 'Sort by latest', 'Sort by price: low to high', 'Sort by price: high to low'];
+  public sortBy = ['Sort by popularity', 'Sort by average rating',
+    'Sort by latest', 'Sort by price: low to high', 'Sort by price: high to low'];
   selectedSorting = 'Default sorting';
   public newSelectedValue: string;
 
@@ -29,6 +31,11 @@ export class ProductListComponent implements OnInit {
     console.log(newValue);
     this.selectedSorting = newValue;
     this.newSelectedValue = newValue;
+  }
+
+  addToCart(product: ProductModel, quantity = 1) {
+    this.cartService.updateProductGroup(product, quantity);
+    window.alert('Your product has been added to the cart! Quantity: ' + quantity);
   }
 
   onSale(iter) {
@@ -58,7 +65,7 @@ export class ProductListComponent implements OnInit {
       this.subCatName = this.route.snapshot.queryParamMap.get('category2');
       this.categoryService.setSubCatName(this.subCatName);
       this.categoryService.findProductBySubCategory().subscribe(
-        (response: any[]) => this.fetchedProductsByCategory = response
+        (response: ProductModel[]) => this.fetchedProductsByCategory = response
       );
     }
     this.categoryService.setSorting(this.sorting);

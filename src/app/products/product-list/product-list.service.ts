@@ -46,8 +46,8 @@ export class ProductListService {
   }
 
   findProductBySubCategory() {
-    // tslint:disable-next-line:max-line-length
-    const url2 =  this.url + 'product/findByTwoCategories?category1=' + this.catName + '&category2=' + this.subCatName + '&sort=' + this.sorting + 'sortColumn=' + this.sortingColumn;
+    const url2 =  this.url + 'product/findByTwoCategories?category1=' +
+      this.catName + '&category2=' + this.subCatName + '&sort=' + this.sorting + 'sortColumn=' + this.sortingColumn;
     return this.http.get(url2);
 
   }
