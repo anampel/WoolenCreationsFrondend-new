@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from './cart.service';
 import {FormBuilder} from '@angular/forms';
-import {ProductGroup, ProductModel} from '../../products/product-item/product.model';
+import {ProductGroup, ProductId, ProductModel} from '../../products/product-item/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -33,6 +33,9 @@ export class CartComponent implements OnInit {
 
   getTotalPrice(): number {
     return this.cartService.cartTotalPrice;
+  }
+  getGroupPrice(product: ProductModel) {
+    return this.cartService.getProductGroupPrice(product.id);
   }
 
   updateProductGroup(product: ProductModel): void {
