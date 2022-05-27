@@ -21,7 +21,7 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { OfferComponent } from './products/offer/offer.component';
 import { CreateYourOwnComponent } from './products/create-your-own/create-your-own.component';
-import { WishlistComponent } from './products/wishlist/wishlist.component';
+import { WishlistComponent } from './user/wishlist/wishlist.component';
 // Shopping feature
 import { CartComponent } from './shopping/cart/cart.component';
 import { CheckoutComponent } from './shopping/checkout/checkout.component';

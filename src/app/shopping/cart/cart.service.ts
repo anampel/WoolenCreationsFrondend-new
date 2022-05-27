@@ -4,9 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {ProductGroup, ProductId, ProductModel} from '../../products/product-item/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
-
 export class CartService {
   productGroupMap: Map<ProductId, ProductGroup> = new Map<ProductId, ProductGroup>();
 

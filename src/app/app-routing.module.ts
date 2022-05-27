@@ -8,7 +8,7 @@ import { CheckoutComponent } from './shopping/checkout/checkout.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
-import { WishlistComponent } from './products/wishlist/wishlist.component';
+import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { ForgotPassComponent } from './user/authentication/forgot-pass/forgot-pass.component';
 import { OrderComponent } from './shopping/order/order.component';
 import {FaqComponent} from './header/pages/faq/faq.component';
