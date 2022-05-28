@@ -24,15 +24,22 @@ export class ProductListComponent implements OnInit {
   public isSale: boolean;
   public sorting: string;
   public sortingColumn: string;
-  public sortBy = ['Sort by popularity', 'Sort by average rating',
-    'Sort by latest', 'Sort by price: low to high', 'Sort by price: high to low'];
-  selectedSorting = 'Default sorting';
+  public sortBy = ['---', 'Sort by price: low to high', 'Sort by price: high to low'];
   public newSelectedValue: string;
 
-  onChange(newValue) {
-    console.log(newValue);
-    this.selectedSorting = newValue;
-    this.newSelectedValue = newValue;
+  onChange(deviceValue) {
+    if (deviceValue === this.sortBy[1]) {
+      this.sorting = 'ASC';
+      this.sortingColumn = 'price';
+    } else if (deviceValue === this.sortBy[2]) {
+      this.sorting = 'DESC';
+      this.sortingColumn = 'price';
+    } else {
+      console.log('Not supported yet');
+    }
+    this.categoryService.refreshCurrentSearch(this.sorting, this.sortingColumn).subscribe(
+      (response: any[]) => this.fetchedProductsByCategory = response
+    );
   }
 
   addToCart(product: ProductModel, quantity = 1) {
@@ -53,27 +60,15 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.catName = this.route.snapshot.queryParamMap.get('category1');
-    this.categoryService.setCatName(this.catName);
-    if (this.newSelectedValue === this.sortBy[3]) {
-      this.sorting = 'ASC';
-      this.sortingColumn = 'price';
-    } else if (this.newSelectedValue === this.sortBy[4]) {
-      this.sorting = 'DESC';
-      this.sortingColumn = 'price';
+    this.subCatName = this.route.snapshot.queryParamMap.get('category2');
+    if (this.subCatName != null) {
+      this.categoryService.setCurrentUrl('/findByTwoCategories?category1=' + this.catName + '&category2=' + this.subCatName);
     } else {
-      console.log('Not supported yet');
+      this.categoryService.setCurrentUrl('/findByCategory?category1=' + this.catName);
     }
-    this.categoryService.findProductsByCategory().subscribe(
+    this.categoryService.findProductsPerCategory().subscribe(
       (response: any[]) => this.fetchedProductsByCategory = response
     );
-    if (this.route.snapshot.queryParamMap.get('category2') != null) {
-      this.subCatName = this.route.snapshot.queryParamMap.get('category2');
-      this.categoryService.setSubCatName(this.subCatName);
-      this.categoryService.findProductBySubCategory().subscribe(
-        (response: ProductModel[]) => this.fetchedProductsByCategory = response
-      );
-    }
-    this.categoryService.setSorting(this.sorting);
-    this.categoryService.setSortingColumn(this.sortingColumn);
+
   }
 }

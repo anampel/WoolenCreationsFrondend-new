@@ -6,30 +6,18 @@ import {ActivatedRoute} from '@angular/router';
   providedIn: 'root'
 })
 export class ProductListService {
-  private catName: string;
-  private subCatName: string;
+
   private sorting: string;
   private sortingColumn: string;
   private page: string;
-  private url = 'http://localhost:8080/api/v1/';
+  private url = 'http://localhost:8080/api/v1/product';
+  private currentUrl: string;
   private id: string;
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient) {
   }
 
-  public setCatName(value: string) {
-    this.catName = value;
-  }
-
-  public setSubCatName(value: string) {
-    this.subCatName = value;
-  }
-
-  public setSorting(value: string) {
-    this.sorting = value;
-  }
-
-  public setSortingColumn(value: string) {
-    this.sortingColumn = value;
+  public setCurrentUrl(value: string) {
+    this.currentUrl = this.url + value;
   }
 
   public setPage(value: string) {
@@ -40,21 +28,17 @@ export class ProductListService {
     this.id = value;
   }
 
-  findProductsByCategory() {
-    const url1 = this.url + 'product/findByCategory?category1=' + this.catName;
-    return this.http.get(url1);
-  }
-
-  findProductBySubCategory() {
-    const url2 =  this.url + 'product/findByTwoCategories?category1=' +
-      this.catName + '&category2=' + this.subCatName + '&sort=' + this.sorting + 'sortColumn=' + this.sortingColumn;
-    return this.http.get(url2);
-
+  findProductsPerCategory() {
+    return this.http.get(this.currentUrl);
   }
 
   findProductById() {
     const url3 =  this.url + 'product/findById?id=' + this.id ;
     return this.http.get(url3);
+  }
+  refreshCurrentSearch(sorting: string, sortingColumn: string) {
+    const url1 = this.currentUrl + '&sortColumn=' + sortingColumn + '&sort=' + sorting;
+    return this.http.get(url1);
   }
 
 }

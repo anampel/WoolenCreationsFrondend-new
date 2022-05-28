@@ -30,7 +30,7 @@
               <div class="heading d-flex justify-content-between mb-5">
                 <p class="result-count mb-0"> Showing 1–6 of 17 results</p>
                 <form class="ordering " method="get">
-                  <select [ngModel]="selectedSorting" (ngModelChange)="onChange($event)" name="sel2">
+                  <select (change)="onChange($event.target.value)" name="sel2">
                     <option [value]="i" *ngFor="let i of sortBy">{{i}}</option>
                   </select>
                   <input type="hidden" name="paged" value="1">
