@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit {
   public sortBy = ['---', 'Sort by price: low to high', 'Sort by price: high to low'];
   public newSelectedValue: string;
   public colors: any[] = [];
-  colorMap: Map<string, string> = new Map<string, string>();
+  getColorMap: Map<string, string> = new Map<string, string>();
   colorSizeForm = this.formBuilder.group({
     color: new FormControl()
   });
@@ -75,19 +75,7 @@ export class ProductListComponent implements OnInit {
       (response: any[]) => this.fetchedProductsByCategory = response
     );
     this.categoryService.getColors().subscribe((response: any[]) => this.colors = response);
-    this.setColorClass();
-  }
-
-  setColorClass() {
-      this.colorMap.set('blue', 'sky-blue');
-      this.colorMap.set('red', 'red');
-      this.colorMap.set('grey', 'grey');
-      this.colorMap.set('black', 'dark');
-      this.colorMap.set('white', 'light');
-      this.colorMap.set('pink', 'pink');
-      this.colorMap.set('purple', 'purple');
-      this.colorMap.set('orange', 'orange');
-      this.colorMap.set('green', 'green');
+    this.getColorMap = this.categoryService.setColorClass();
   }
 }
 

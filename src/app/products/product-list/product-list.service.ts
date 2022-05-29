@@ -12,6 +12,7 @@ export class ProductListService {
   private url = 'http://localhost:8080/api/v1/product';
   private currentUrl: string;
   private id: string;
+  colorMap: Map<string, string> = new Map<string, string>();
   constructor(private http: HttpClient) {
   }
 
@@ -32,7 +33,7 @@ export class ProductListService {
   }
 
   findProductById() {
-    const url3 =  this.url + 'product/findById?id=' + this.id ;
+    const url3 =  this.url + '/findById?id=' + this.id ;
     return this.http.get(url3);
   }
   refreshCurrentSearch(sorting: string, sortingColumn: string) {
@@ -43,6 +44,19 @@ export class ProductListService {
   getColors() {
     const url = this.url + '/getColors';
     return this.http.get(url);
+  }
+
+  setColorClass(): Map<string, string> {
+    this.colorMap.set('blue', 'sky-blue');
+    this.colorMap.set('red', 'red');
+    this.colorMap.set('grey', 'grey');
+    this.colorMap.set('black', 'dark');
+    this.colorMap.set('white', 'light');
+    this.colorMap.set('pink', 'pink');
+    this.colorMap.set('purple', 'purple');
+    this.colorMap.set('orange', 'orange');
+    this.colorMap.set('green', 'green');
+    return this.colorMap;
   }
 }
 

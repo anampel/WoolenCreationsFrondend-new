@@ -9,12 +9,12 @@ import {FormBuilder, FormControl} from '@angular/forms';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.css'],
   providers: [ProductListComponent]
 })
 export class ProductItemComponent implements OnInit {
   public fetchedProductsById: ProductModel;
   private id: string;
+  getColorMap: Map<string, string> = new Map<string, string>();
   productItemForm = this.formBuilder.group({
     quantity: new FormControl()
   });
@@ -36,5 +36,5 @@ export class ProductItemComponent implements OnInit {
         (response: ProductModel) => this.fetchedProductsById = response
       );
   }
-
+    this.getColorMap = this.productService.setColorClass();
 }}

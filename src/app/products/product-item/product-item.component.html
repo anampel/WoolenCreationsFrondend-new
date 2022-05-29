@@ -76,56 +76,14 @@
           </div>
 
 
-          <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'red'">
+          <div class="color-swatches mt-4 d-flex align-items-center">
             <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
-                <a [routerLink]="['/product-item']" class="bg-danger"></a>
+                <label class="custom-control-label {{getColorMap.get(fetchedProductsById.color)}}"></label>
               </li>
             </ul>
           </div>
-          <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'blue'">
-            <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a [routerLink]="['/product-item']" class="bg-primary"></a>
-              </li>
-            </ul>
-          </div>
-           <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'grey'">
-            <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a [routerLink]="['/product-item']" class="bg-secondary"></a>
-              </li>
-            </ul>
-          </div>
-           <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'black'">
-            <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a [routerLink]="['/product-item']" class="bg-dark"></a>
-              </li>
-            </ul>
-          </div>
-          <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'white'">
-            <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a [routerLink]="['/product-item']" class="bg-light"></a>
-              </li>
-            </ul>
-          </div>
-         <div class="color-swatches mt-4 d-flex align-items-center" *ngIf="fetchedProductsById.color == 'pink'">
-            <span class="font-weight-bold text-capitalize product-meta-title">color:</span>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a [routerLink]="['/product-item']"  class="pink"></a>
-              </li>
-            </ul>
-          </div>
-
-
 
           <div class="product-size d-flex align-items-center mt-4" *ngIf="fetchedProductsById.size">
             <span class="font-weight-bold text-capitalize product-meta-title">Size:</span>
