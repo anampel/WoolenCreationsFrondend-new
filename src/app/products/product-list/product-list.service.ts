@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {ProductGroup, ProductId} from '../product-item/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductListService {
 
-  private sorting: string;
-  private sortingColumn: string;
   private page: string;
   private url = 'http://localhost:8080/api/v1/product';
   private currentUrl: string;
@@ -41,6 +40,10 @@ export class ProductListService {
     return this.http.get(url1);
   }
 
+  getColors() {
+    const url = this.url + '/getColors';
+    return this.http.get(url);
+  }
 }
 
 

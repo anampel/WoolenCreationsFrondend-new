@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductListService} from './product-list.service';
-import {ProductModel} from '../product-item/product.model';
+import {ProductGroup, ProductId, ProductModel} from '../product-item/product.model';
 import {CartService} from '../../shopping/cart/cart.service';
 import {WishlistComponent} from '../../user/wishlist/wishlist.component';
+import {FormBuilder, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -15,9 +16,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, private router: Router, private categoryService: ProductListService,
-    private cartService: CartService, private wishListComponent: WishlistComponent) {
+    private cartService: CartService, private wishListComponent: WishlistComponent, private formBuilder: FormBuilder) {
   }
-
   public catName: string;
   public subCatName: string;
   public fetchedProductsByCategory: ProductModel[];
@@ -26,6 +26,11 @@ export class ProductListComponent implements OnInit {
   public sortingColumn: string;
   public sortBy = ['---', 'Sort by price: low to high', 'Sort by price: high to low'];
   public newSelectedValue: string;
+  public colors: any[] = [];
+  colorMap: Map<string, string> = new Map<string, string>();
+  colorSizeForm = this.formBuilder.group({
+    color: new FormControl()
+  });
 
   onChange(deviceValue) {
     if (deviceValue === this.sortBy[1]) {
@@ -69,6 +74,20 @@ export class ProductListComponent implements OnInit {
     this.categoryService.findProductsPerCategory().subscribe(
       (response: any[]) => this.fetchedProductsByCategory = response
     );
+    this.categoryService.getColors().subscribe((response: any[]) => this.colors = response);
+    this.setColorClass();
+  }
 
+  setColorClass() {
+      this.colorMap.set('blue', 'sky-blue');
+      this.colorMap.set('red', 'red');
+      this.colorMap.set('grey', 'grey');
+      this.colorMap.set('black', 'dark');
+      this.colorMap.set('white', 'light');
+      this.colorMap.set('pink', 'pink');
+      this.colorMap.set('purple', 'purple');
+      this.colorMap.set('orange', 'orange');
+      this.colorMap.set('green', 'green');
   }
 }
+
