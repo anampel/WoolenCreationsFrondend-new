@@ -37,8 +37,13 @@ export class ProductListService {
     return this.http.get(url3);
   }
   refreshCurrentSearch(sorting: string, sortingColumn: string) {
-    const url1 = this.currentUrl + '&sortColumn=' + sortingColumn + '&sort=' + sorting;
-    return this.http.get(url1);
+    this.currentUrl = this.currentUrl + '&sortColumn=' + sortingColumn + '&sort=' + sorting;
+    return this.http.get( this.currentUrl);
+  }
+  filterByColor(color: string) {
+    this.currentUrl = this.currentUrl + '&color=' + color;
+    window.alert('in filterByColor: ' + this.currentUrl);
+    return this.http.get(this.currentUrl);
   }
 
   getColors() {

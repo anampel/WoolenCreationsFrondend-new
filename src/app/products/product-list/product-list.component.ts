@@ -4,7 +4,7 @@ import {ProductListService} from './product-list.service';
 import {ProductGroup, ProductId, ProductModel} from '../product-item/product.model';
 import {CartService} from '../../shopping/cart/cart.service';
 import {WishlistComponent} from '../../user/wishlist/wishlist.component';
-import {FormBuilder, FormControl} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -13,11 +13,6 @@ import {FormBuilder, FormControl} from '@angular/forms';
   providers: [ProductListService]
 })
 export class ProductListComponent implements OnInit {
-
-  constructor(
-    private route: ActivatedRoute, private router: Router, private categoryService: ProductListService,
-    private cartService: CartService, private wishListComponent: WishlistComponent, private formBuilder: FormBuilder) {
-  }
   public catName: string;
   public subCatName: string;
   public fetchedProductsByCategory: ProductModel[];
@@ -27,10 +22,16 @@ export class ProductListComponent implements OnInit {
   public sortBy = ['---', 'Sort by price: low to high', 'Sort by price: high to low'];
   public newSelectedValue: string;
   public colors: any[] = [];
+  colorSizeForm: FormGroup;
   getColorMap: Map<string, string> = new Map<string, string>();
-  colorSizeForm = this.formBuilder.group({
-    color: new FormControl()
-  });
+
+  constructor(
+    private route: ActivatedRoute, private router: Router, private categoryService: ProductListService,
+    private cartService: CartService, private wishListComponent: WishlistComponent, private formBuilder: FormBuilder) {
+    this.colorSizeForm = formBuilder.group({
+      selectedColors:  new FormArray([])
+    });
+  }
 
   onChange(deviceValue) {
     if (deviceValue === this.sortBy[1]) {
@@ -47,6 +48,27 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  filter(color: string) {
+    this.categoryService.filterByColor(color).subscribe(
+      (response: any[]) => this.fetchedProductsByCategory = response
+    );
+  }
+
+  onCheckboxChange(event: any) {
+    const selectedColors = (this.colorSizeForm.controls.selectedCountries as FormArray);
+    if (event.target.checked) {
+      // selectedColors.push(new FormControl(event.target.value));
+      this.filter(event.target.value);
+    } else {
+      const index = selectedColors.controls
+        .findIndex(x => x.value === event.target.value);
+      selectedColors.removeAt(index);
+    }
+  }
+
+  submit() {
+    console.log(this.colorSizeForm.value);
+  }
   addToCart(product: ProductModel, quantity = 1) {
     this.cartService.updateProductGroup(product, quantity);
     window.alert('Your product has been added to the cart! Quantity: ' + quantity);

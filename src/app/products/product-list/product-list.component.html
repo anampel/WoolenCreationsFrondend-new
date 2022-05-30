@@ -100,17 +100,17 @@
 
 
         <!-- color and size -->
-        <form class="mb-5" [formGroup]="colorSizeForm">
+        <form class="mb-5" [formGroup]="colorSizeForm" (ngSubmit)="submit()">
 
 
           <!-- color -->
           <section class="widget widget-colors mb-5">
             <h3 class="widget-title h4 mb-4">Shop by color</h3>
             <ul class="list-inline">
-              <li class="list-inline-item mr-4" *ngFor="let color of colors">
+              <li class="list-inline-item mr-4" *ngFor="let color of colors; let i=index">
                 <div class="custom-control custom-checkbox color-checkbox" *ngIf="getColorMap.has(color)">
-                  <input type="checkbox" class="custom-control-input" id="{{color}}" formControlName="color">
-                  <label class="custom-control-label {{getColorMap.get(color)}}"></label>
+                  <input type="checkbox" class="custom-control-input" id="{{color}}" formArrayName="selectedColors" [value]="color" (change)="onCheckboxChange($event)">
+                  <label class="custom-control-label {{getColorMap.get(color)}}" for="{{color}}"></label>
                 </div>
               </li>
             </ul>
@@ -141,7 +141,7 @@
             </div>
           </section>
 
-          <button type="button" class="btn btn-black btn-small">Filter</button>
+          <button type="submit" class="btn btn-black btn-small">Filter</button>
         </form>
 
         <!-- popular product -->
