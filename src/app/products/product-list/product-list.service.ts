@@ -42,7 +42,11 @@ export class ProductListService {
   }
   filterByColor(color: string) {
     this.currentUrl = this.currentUrl + '&color=' + color;
-    window.alert('in filterByColor: ' + this.currentUrl);
+    return this.http.get(this.currentUrl);
+  }
+
+  filterBySize(size: string) {
+    this.currentUrl = this.currentUrl + '&productSize=' + size;
     return this.http.get(this.currentUrl);
   }
 

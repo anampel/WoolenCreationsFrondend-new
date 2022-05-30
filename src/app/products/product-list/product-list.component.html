@@ -109,7 +109,7 @@
             <ul class="list-inline">
               <li class="list-inline-item mr-4" *ngFor="let color of colors; let i=index">
                 <div class="custom-control custom-checkbox color-checkbox" *ngIf="getColorMap.has(color)">
-                  <input type="checkbox" class="custom-control-input" id="{{color}}" formArrayName="selectedColors" [value]="color" (change)="onCheckboxChange($event)">
+                  <input type="checkbox" class="custom-control-input" id="{{color}}" formArrayName="selectedColors" [value]="color" (change)="onColorChange($event)">
                   <label class="custom-control-label {{getColorMap.get(color)}}" for="{{color}}"></label>
                 </div>
               </li>
@@ -119,25 +119,9 @@
           <!-- size -->
           <section class="widget widget-sizes mb-5">
             <h3 class="widget-title h4 mb-4">Shop by Sizes</h3>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="size1" checked>
-              <label class="custom-control-label" for="size1">L Large</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="size2">
-              <label class="custom-control-label" for="size2">XL Extra Large</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="size3">
-              <label class="custom-control-label" for="size3">M Medium</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="size4">
-              <label class="custom-control-label" for="size4">S Small</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="size5">
-              <label class="custom-control-label" for="size5">XS Extra Small</label>
+            <div class="custom-control custom-checkbox" *ngFor="let size of sizes">
+              <input type="checkbox" class="custom-control-input" id="{{size}}" formArrayName="selectedSize" [value]="size.value" (change)="onSizeChange($event)">
+              <label class="custom-control-label" for="{{size}}">{{size.value}}</label>
             </div>
           </section>
 

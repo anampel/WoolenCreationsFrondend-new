@@ -24,12 +24,19 @@ export class ProductListComponent implements OnInit {
   public colors: any[] = [];
   colorSizeForm: FormGroup;
   getColorMap: Map<string, string> = new Map<string, string>();
-
+  sizes: Array<any> = [
+    { name: 'L', value: 'Large' },
+    { name: 'XL', value: 'Extra Large' },
+    { name: 'M', value: 'Medium' },
+    { name: 'S', value: 'Small' },
+    { name: 'XS', value: 'Extra Small' }
+  ];
   constructor(
     private route: ActivatedRoute, private router: Router, private categoryService: ProductListService,
     private cartService: CartService, private wishListComponent: WishlistComponent, private formBuilder: FormBuilder) {
     this.colorSizeForm = formBuilder.group({
-      selectedColors:  new FormArray([])
+      selectedColors:  new FormArray([]),
+      selectedSize:  new FormArray([])
     });
   }
 
@@ -48,21 +55,38 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-  filter(color: string) {
+  filterByColor(color: string) {
     this.categoryService.filterByColor(color).subscribe(
       (response: any[]) => this.fetchedProductsByCategory = response
     );
   }
+  filterBySize(size: string) {
+    this.categoryService.filterBySize(size).subscribe(
+      (response: any[]) => this.fetchedProductsByCategory = response
+    );
+  }
 
-  onCheckboxChange(event: any) {
-    const selectedColors = (this.colorSizeForm.controls.selectedCountries as FormArray);
+  onColorChange(event: any) {
+    const selectedColors = (this.colorSizeForm.controls.selectedColors as FormArray);
     if (event.target.checked) {
-      // selectedColors.push(new FormControl(event.target.value));
-      this.filter(event.target.value);
+      selectedColors.push(new FormControl(event.target.value));
+      this.filterByColor(event.target.value);
     } else {
       const index = selectedColors.controls
         .findIndex(x => x.value === event.target.value);
       selectedColors.removeAt(index);
+    }
+  }
+  onSizeChange(event: any) {
+    const selectedSize = (this.colorSizeForm.controls.selectedSize as FormArray);
+    if (event.target.checked) {
+      selectedSize.push(new FormControl(event.target.value));
+      console.log(event.target.value);
+      this.filterBySize(event.target.value);
+    } else {
+      const index = selectedSize.controls
+        .findIndex(x => x.value === event.target.value);
+      selectedSize.removeAt(index);
     }
   }
 
