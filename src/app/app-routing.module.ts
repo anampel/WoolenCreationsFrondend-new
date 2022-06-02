@@ -18,8 +18,9 @@ import {AboutUsComponent} from './header/pages/about-us/about-us.component';
 import {OfferComponent} from './products/offer/offer.component';
 import {CreateYourOwnComponent} from './products/create-your-own/create-your-own.component';
 import {LoginComponent} from './user/authentication/login/login.component';
+import {AuthGuard} from './user/authentication/helpers/auth.guard';
+import {SignupComponent} from './user/authentication/signup/signup.component';
 
-let AuthGuard;
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'offer', component: OfferComponent },
   { path: 'createYourOwn', component: CreateYourOwnComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

@@ -41,6 +41,7 @@ import { AppService } from './app.service';
 import { ProductListService } from './products/product-list/product-list.service';
 import { CartService } from './shopping/cart/cart.service';
 import {fakeBackendProvider} from './user/authentication/helpers/fake-backend';
+import {SignupComponent} from './user/authentication/signup/signup.component';
 
 
 @NgModule({
@@ -57,7 +58,7 @@ import {fakeBackendProvider} from './user/authentication/helpers/fake-backend';
     LoginComponent,
     UserDetailsComponent,
     WishlistComponent,
-    // SignupComponent,
+    SignupComponent,
     ForgotPassComponent,
     OrderComponent,
     PagesComponent,
