@@ -12,6 +12,6 @@ export class User {
   role: string;
   points: number;
   guest: boolean;
-  authdata?: string;
+  token: string;
 }
 

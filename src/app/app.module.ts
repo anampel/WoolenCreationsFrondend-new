@@ -33,7 +33,7 @@ import { ForgotPassComponent } from './user/authentication/forgot-pass/forgot-pa
 import { LoginComponent } from './user/authentication/login/login.component';
 import { BasicAuthInterceptor } from './user/authentication/helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './user/authentication/helpers/error.interceptor';
-// TODO login and signup components
+import { AlertComponent } from './user/authentication/alert/alert.component';
 // services
 import { UserService } from './user/user.service';
 import { UserDetailsService } from './user/user-details/user-details.service';
@@ -67,7 +67,8 @@ import {fakeBackendProvider} from './user/authentication/helpers/fake-backend';
     BlogComponent,
     OfferComponent,
     CreateYourOwnComponent,
-    UserComponent
+    UserComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

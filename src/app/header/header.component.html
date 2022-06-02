@@ -165,7 +165,7 @@
       <!-- / Cart -->
 
       <!-- Account -->
-      <li class="nav-item dropdown dropdown-slide list-inline-item">
+      <li class="nav-item dropdown dropdown-slide list-inline-item" *ngIf="currentUser">
         <a class="nav-link dropdown-toggle"  id="navbarDropdown5" role="button" data-delay="350"
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person"
@@ -181,6 +181,8 @@
           <li><a routerLink="/login">Login Page</a></li>
           <li><a routerLink="/signup">SignUp Page</a></li>
           <li><a routerLink="/forgotPass">Forgot Password</a></li>
+          <li><a class="nav-item nav-link" (click)="logout()">Logout</a></li>
+
         </ul>
       </li>
       <!-- / Account -->

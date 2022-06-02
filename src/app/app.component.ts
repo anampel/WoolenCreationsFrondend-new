@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from './user/user';
-import {Router} from '@angular/router';
-import {AuthenticationService} from './user/authentication/auth.service';
 
 // Selector is the name of the page
 // Another ways to use the selector:
@@ -33,18 +30,8 @@ import {AuthenticationService} from './user/authentication/auth.service';
 export class AppComponent implements OnInit {
   title = 'WoolenCreations';
 
-  user: User;
+  constructor() {}
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService
-  ) {
-    this.authenticationService.user.subscribe(x => this.user = x);
-  }
-
-  logout() {
-    this.authenticationService.logout();
-  }
   ngOnInit() {
     // Arrow function expressions
     // Does not have its own bindings to this or super, and should not be used as methods.
@@ -52,5 +39,10 @@ export class AppComponent implements OnInit {
     // Not suitable for call, apply and bind methods, which generally rely on establishing a scope.
     // Can not be used as constructors.
     // Can not use yield, within its body.
-    }
+  }
+
+  // Retrieve a method in typescript
+  getMethod() {
+    return this.title;
+  }
 }
