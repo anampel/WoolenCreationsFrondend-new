@@ -28,7 +28,6 @@
     "ngx-cookie": "^6.0.0",
     "ngx-cookie-service": "^13.2.0",
     "ngx-slick-carousel": "^0.5.1",
-    "ngx-toastr": "^14.2.4",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "slick-carousel": "^1.8.1",

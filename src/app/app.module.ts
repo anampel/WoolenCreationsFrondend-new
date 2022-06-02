@@ -13,11 +13,11 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CheckoutComponent } from './shopping/checkout/checkout.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
-import { LoginComponent } from './user/authentication/login/login.component';
+// import { LoginComponent } from './user/authentication/login/login.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { WishlistComponent } from './products/wishlist/wishlist.component';
 import { ForgotPassComponent } from './user/authentication/forgot-pass/forgot-pass.component';
-import { SignupComponent} from './user/authentication/signup/signup.component';
+// import { SignupComponent} from './user/authentication/signup/signup.component';
 import { OrderComponent } from './shopping/order/order.component';
 import { PagesComponent } from './header/pages/pages.component';
 import { AboutUsComponent } from './header/pages/about-us/about-us.component';
@@ -47,10 +47,10 @@ import { UserDetailsService } from "./user/user-details/user-details.service";
     CheckoutComponent,
     ProductsComponent,
     ProductListComponent,
-    LoginComponent,
+    // LoginComponent,
     UserDetailsComponent,
     WishlistComponent,
-    SignupComponent,
+    // SignupComponent,
     ForgotPassComponent,
     OrderComponent,
     PagesComponent,
