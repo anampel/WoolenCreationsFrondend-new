@@ -1,6 +1,6 @@
 import {AddressList} from '../shopping/order/order.model';
 
-export interface User {
+export class User {
   id: number;
   username: string;
   password: string;
@@ -12,4 +12,6 @@ export interface User {
   role: string;
   points: number;
   guest: boolean;
+  authdata?: string;
 }
+

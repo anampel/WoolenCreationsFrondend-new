@@ -17,9 +17,11 @@ import {BlogComponent} from './header/pages/blog/blog.component';
 import {AboutUsComponent} from './header/pages/about-us/about-us.component';
 import {OfferComponent} from './products/offer/offer.component';
 import {CreateYourOwnComponent} from './products/create-your-own/create-your-own.component';
+import {LoginComponent} from './user/authentication/login/login.component';
 
+let AuthGuard;
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'products', component: ProductsComponent },
@@ -34,7 +36,10 @@ const routes: Routes = [
   { path: 'pages/blog', component: BlogComponent },
   { path: 'pages/aboutUs', component: AboutUsComponent },
   { path: 'offer', component: OfferComponent },
-  { path: 'createYourOwn', component: CreateYourOwnComponent }
+  { path: 'createYourOwn', component: CreateYourOwnComponent },
+  { path: 'login', component: LoginComponent },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

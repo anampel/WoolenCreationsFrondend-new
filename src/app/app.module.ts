@@ -30,6 +30,9 @@ import { OrderComponent } from './shopping/order/order.component';
 import { UserComponent } from './user/user.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { ForgotPassComponent } from './user/authentication/forgot-pass/forgot-pass.component';
+import { LoginComponent } from './user/authentication/login/login.component';
+import { BasicAuthInterceptor } from './user/authentication/helpers/basic-auth.interceptor';
+import { ErrorInterceptor } from './user/authentication/helpers/error.interceptor';
 // TODO login and signup components
 // services
 import { UserService } from './user/user.service';
@@ -37,6 +40,7 @@ import { UserDetailsService } from './user/user-details/user-details.service';
 import { AppService } from './app.service';
 import { ProductListService } from './products/product-list/product-list.service';
 import { CartService } from './shopping/cart/cart.service';
+import {fakeBackendProvider} from './user/authentication/helpers/fake-backend';
 
 
 @NgModule({
@@ -50,7 +54,7 @@ import { CartService } from './shopping/cart/cart.service';
     CheckoutComponent,
     ProductsComponent,
     ProductListComponent,
-    // LoginComponent,
+    LoginComponent,
     UserDetailsComponent,
     WishlistComponent,
     // SignupComponent,
@@ -79,7 +83,12 @@ import { CartService } from './shopping/cart/cart.service';
     UserDetailsService,
     ProductListService,
     AppService,
-    CartService
+    CartService,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

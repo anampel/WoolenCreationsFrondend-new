@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import {User} from './user';
-@Injectable({ providedIn: 'any' })
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+import { environment } from '../../environments/environment';
+import { User } from './user';
+import {Observable} from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
 export class UserService {
+  constructor(private http: HttpClient) {
+  }
+
   private userUrl = 'http://localhost:8080/api/v1/user/';
   private userId: number;
   private productId: number;
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
       Authorization: 'my-auth-token'
     })
   };
-  constructor(private http: HttpClient) { }
+
+  getAll() {
+    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+  }
 
   register(user: User) {
     return this.http.post(`auth/register`, user);
@@ -36,6 +44,7 @@ export class UserService {
     const url1 = this.userUrl + 'findWishList?userId=' + this.userId;
     return this.http.get(url1);
   }
+
   removeFromWishList(): any {
     const url1 = this.userUrl + 'deleteFromWishList?userId=' + this.userId + '&productId=' + this.productId;
     return this.http.delete<any>(url1, this.httpOptions);
@@ -47,5 +56,6 @@ export class UserService {
       userId: this.userId,
       productId: this.productId
     }, this.httpOptions);
+
   }
 }
