@@ -1,39 +1,34 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
-import { User } from './user';
-import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {User} from './user';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class UserService {
-  constructor(private http: HttpClient) {
-  }
-
-  private userUrl = 'http://localhost:8080/api/v1/user/';
-  private userId: number;
-  private productId: number;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'my-auth-token'
     })
   };
+  private userUrl = 'http://localhost:8080/api/v1/user/';
+  private userId: number;
+  private productId: number;
 
-  getAll() {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+  constructor(private http: HttpClient) {
   }
 
-   register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
-    }
+  getAll() {
+    return this.http.get<User[]>(`${environment.apiUrl}/user/findAll`);
+  }
 
-    delete(id: number) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`);
-    }
+  register(user: User) {
+    return this.http.post(`${environment.apiUrl}/user/add`, user);
+  }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.userUrl + 'findAll');
+  delete(id: number) {
+    return this.http.delete(`${environment.apiUrl}/user/delete?userID=${id}`);
   }
 
   public setUserId(value: number) {
@@ -45,18 +40,17 @@ export class UserService {
   }
 
   findWishList() {
-    const url1 = this.userUrl + 'findWishList?userId=' + this.userId;
+    const url1 = `${environment.apiUrl}/user/findWishList?userId=` + this.userId;
     return this.http.get(url1);
   }
 
   removeFromWishList(): any {
-    const url1 = this.userUrl + 'deleteFromWishList?userId=' + this.userId + '&productId=' + this.productId;
+    const url1 = `${environment.apiUrl}/user/deleteFromWishList?userId=` + this.userId + '&productId=' + this.productId;
     return this.http.delete<any>(url1, this.httpOptions);
   }
 
   addToWishlist(): any {
-    const url1 = this.userUrl + 'addToWishlist';
-    return this.http.post<any>(url1, {
+    return this.http.post<any>(`${environment.apiUrl}/user/addToWishlist`, {
       userId: this.userId,
       productId: this.productId
     }, this.httpOptions);
