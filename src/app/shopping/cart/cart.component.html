@@ -113,7 +113,7 @@
               <br>
             </ul>
             <br>
-            <a routerLink="/checkout" class="btn btn-main btn-small">Proceed to checkout</a><br>
+            <a [routerLink]="['/checkout']" [queryParams]="{ total: getTotalPrice()}" (click)="passCartList()" class="btn btn-main btn-small">Proceed to checkout</a><br>
           </div>
           <br>
         </div>

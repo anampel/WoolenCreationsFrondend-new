@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from './cart.service';
 import {FormBuilder} from '@angular/forms';
 import {ProductGroup, ProductId, ProductModel} from '../../products/product-item/product.model';
+import {CheckoutService} from '../checkout/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +21,12 @@ export class CartComponent implements OnInit {
   });
 
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private router: Router, private cartService: CartService, private formBuilder: FormBuilder) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private cartService: CartService,
+    private formBuilder: FormBuilder,
+    private checkoutService: CheckoutService) {
   }
 
   removeFromCart(productGroup: ProductGroup) {
@@ -36,6 +42,11 @@ export class CartComponent implements OnInit {
   }
   getGroupPrice(product: ProductModel) {
     return this.cartService.getProductGroupPrice(product.id);
+  }
+
+  passCartList() {
+    this.checkoutService.setCartList(this.productGroups);
+    console.log('Get in passCartList ');
   }
 
   updateProductGroup(product: ProductModel): void {
