@@ -12,7 +12,6 @@ export class UserService {
       Authorization: 'my-auth-token'
     })
   };
-  private userUrl = 'http://localhost:8080/api/v1/user/';
   private userId: number;
   private productId: number;
 

@@ -4,7 +4,7 @@ import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 
 // array in local storage for registered users
-let users = JSON.parse(localStorage.getItem('users')) || [];
+let users = JSON.parse(localStorage.getItem('currentUser')) || [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -61,7 +61,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
       user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
       users.push(user);
-      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('currentUser', JSON.stringify(users));
 
       return ok();
     }
@@ -79,7 +79,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       }
 
       users = users.filter(x => x.id !== idFromUrl());
-      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('currentUser', JSON.stringify(users));
       return ok();
     }
 
@@ -98,7 +98,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function isLoggedIn() {
-      return headers.get('Authorization') === 'Bearer fake-jwt-token';
+      return headers.get('Authorization') === 'Bearer fake-jwt-token'; // Bearer <token> --> token=fake-jwt-token
     }
 
     function idFromUrl() {
